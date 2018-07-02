@@ -133,9 +133,6 @@ public class APIMethods {
 			response.setResponseTime(responseTime);
 			return response;
 		}
-
-		
-		
 		
 		
 		public HttpURLConnection clientURLConnection(String url,
