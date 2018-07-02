@@ -1,30 +1,21 @@
 package com.OneAssist.com.OneAssist_API_Automation.testSuite;
 
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
-import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URISyntaxException;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
 
 import org.codehaus.jackson.map.ObjectMapper;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import com.OneAssist.com.OneAssist_API_Automation.core.APIHeaders;
 import com.OneAssist.com.OneAssist_API_Automation.core.APIMethods;
 import com.OneAssist.com.OneAssist_API_Automation.core.ConfigDetails;
+import com.OneAssist.com.OneAssist_API_Automation.core.ErrorResponse;
 import com.OneAssist.com.OneAssist_API_Automation.core.Response;
 import com.OneAssist.com.OneAssist_API_Automation.core.Xls_Reader;
+import com.OneAssist.com.OneAssist_API_Automation.pojoClasses.CreateRenewResponse;
+import com.OneAssist.com.OneAssist_API_Automation.pojoClasses.CreateRenewResponseClass;
 import com.OneAssist.com.OneAssist_API_Automation.pojoClasses.CreateRenewal;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -38,7 +29,7 @@ public class BulkBoardingTestSuite extends ConfigDetails {
 	String reqJson=null;
 
 	@Test
-	public void beforeMethod() throws MalformedURLException, URISyntaxException, IOException {
+	public void beforeMethod() throws Exception {
 
 		apiheaders = new APIHeaders();
 		method = new APIMethods();
@@ -47,6 +38,8 @@ public class BulkBoardingTestSuite extends ConfigDetails {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		
+		method.createPOJOForJSON(System.getProperty("user.dir")+"\\sampleJSON", "com.OneAssist.com.OneAssist_API_Automation.pojoClasses", "CreateRenewResponse");
 		
 		ObjectMapper mapper = new ObjectMapper();
 		CreateRenewal customerRenewal = new CreateRenewal();
@@ -67,14 +60,33 @@ public class BulkBoardingTestSuite extends ConfigDetails {
 		PaymentInfo paymentInfo = new PaymentInfo("online");
 		CreateRenewal customerRenewal = new CreateRenewal(customerDetails,paymentInfo,orderInfo,assetDetails,"1001994495");*/
 		
+		
+		
 		Gson gson = new GsonBuilder().setPrettyPrinting().create();
 		reqJson = gson.toJson(customerRenewal);
 		System.out.println("request api data JSON: "+reqJson);
 		
-		String apiUrl = baseURL + "/OASYS/webservice/rest/api/renewals/";		
+		String apiUrl = baseURL + "/OASYS/webservice/rest/api/renewals/";
+		System.out.println("API URL"+apiUrl);
 		Response response = method.Post(apiUrl, apiheaders.getLoggedInHeaders("application/json", "application/json", "Basic d3N0ZXN0Om9hc3lz"), reqJson);
 		
-		try {
+		System.out.println("Response"+response.getResponse());
+		int statusCode = response.getStatusCode();
+		if(statusCode == 200){
+			
+			String jsonResponse = response.getResponse();
+			
+			CreateRenewResponse renewResponse = gson.fromJson(jsonResponse, CreateRenewResponse.class);
+			System.out.println(renewResponse.getCustomerDetails().get(0).getEmailId());
+			//renewResponse.get
+			
+			}
+		
+		
+		
+		
+		
+		/*try {
 			System.out.println("response API data JSON : " + gson.toJson(new JSONObject(response.getResponse())));
 		} catch (JSONException e1) {
 			// TODO Auto-generated catch block
@@ -90,7 +102,7 @@ public class BulkBoardingTestSuite extends ConfigDetails {
 			fileWriter.flush();
 		} catch (Exception e) {
 			e.printStackTrace();
-		}
+		}*/
 		
 		
 		/*try {

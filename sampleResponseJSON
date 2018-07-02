@@ -1,0 +1,38 @@
+{
+"payNowLink": "https://sit4.1atesting.in/OASYS/onlinePayment?link=NkJDfKbc3VM%253D",
+"paymentMode": "online",
+"isMailSent": "Y",
+"customerOrderInfo": {
+"discount": 0,
+"orderId": 3290609,
+"planName": "Prolong for Mobile 15K to 20K",
+"taxAmount": 0,
+"price": 999
+},
+"membershipInfo": {
+"membershipNumber": null,
+"startDate": "22-Feb-2018",
+"endDate": "21-Feb-2019",
+"primaryCustomerId": null,
+"secondaryCustomerId": null
+},
+"pendingCustomerInfo": [
+{
+"customerTempId": 2867464,
+"previousCustomerId": 2866022,
+"activityReferenceId": "5afd3636e4b03662c6c0d7bb"
+}
+],
+"productInfo": [
+{
+"productCode": "MP01",
+"productName": "MobileAssist",
+"categoryCode": "PE"
+}
+],
+"primaryCustomerName": "Arun Singh",
+"secondaryCustomerName": null,
+"status": "success",
+"message": "PENDING_CUSTOMER_CREATED_SUCCESSFULLY"
+}
+
