@@ -3,11 +3,11 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.OneAssist.com.OneAssist_API_Automation.testSuite.TestBulkBoarding">
+      <class name="com.OneAssist.com.OneAssist_API_Automation.testSuite.TestCreateRenewal">
         <methods>
-          <include name="testBulkBoardingOASYS"/>
+          <include name="testCreateRenewalOASYS"/>
         </methods>
-      </class> <!-- com.OneAssist.com.OneAssist_API_Automation.testSuite.TestBulkBoarding -->
+      </class> <!-- com.OneAssist.com.OneAssist_API_Automation.testSuite.TestCreateRenewal -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

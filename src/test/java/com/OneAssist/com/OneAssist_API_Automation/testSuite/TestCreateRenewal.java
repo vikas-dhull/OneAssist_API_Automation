@@ -31,7 +31,7 @@ public class TestCreateRenewal {
 		
 		try {
 			//method.createPOJOForJSON(System.getProperty("user.dir")+ "\\createRenewalReq", "com.OneAssist.com.OneAssist_API_Automation.pojoClasses.createRenewal", "CreateRenewal");
-			method.createPOJOForJSON(System.getProperty("user.dir")+ "\\createRenewalRes", "com.OneAssist.com.OneAssist_API_Automation.pojoClasses.createRenewalResponse", "CreateRenewalResponse");
+			method.createPOJOForJSON(System.getProperty("user.dir")+ "\\createRenewalResponse", "com.OneAssist.com.OneAssist_API_Automation.pojoClasses.createRenewalResponse", "CreateRenewalResponse");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
