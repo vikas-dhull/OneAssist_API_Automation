@@ -1,5 +1,5 @@
 
-package com.OneAssist.com.OneAssist_API_Automation.pojoClasses;
+package com.OneAssist.com.OneAssist_API_Automation.pojoClasses.createRenewal;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -31,7 +31,7 @@ public class CreateRenewal implements Serializable
     @SerializedName("membershipId")
     @Expose
     private String membershipId;
-    private final static long serialVersionUID = -4142117626570960127L;
+    private final static long serialVersionUID = 3803755785053765656L;
 
     /**
      * No args constructor for use in serialization

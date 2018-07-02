@@ -1,0 +1,29 @@
+{
+"initiatingSystem": 1,
+"action":null,
+
+"customerInfo": [{
+"firstName": "Mandatory",
+"mobileNumber": 3456987653,
+"relationship": "self",
+"assetInfo": [{
+"productCode": "MP01",
+"assetMake": "SMSG",
+"assetModel": "GALAXY",
+"invoiceDate":"20-JUN-2018",
+"invoiceValue":12000,
+"serialNo1": "87238971428978963"
+}]
+}],
+
+"orderInfo": {
+"planCode": 446,
+"partnerCode": 93,
+"partnerBUCode": 1115
+},
+"paymentInfo": {
+
+"paymentMode": "COD"
+}
+
+}

@@ -1,4 +1,4 @@
-package com.OneAssist.com.OneAssist_API_Automation.fileReader;
+package com.OneAssist.API_Automation.fileReader;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -7,12 +7,14 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
 import javax.swing.plaf.synth.SynthSeparatorUI;
 
 import org.apache.poi.EncryptedDocumentException;
+import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.apache.poi.ss.usermodel.Cell;
@@ -22,6 +24,7 @@ import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 public class ExcelUtil {
@@ -64,7 +67,7 @@ public class ExcelUtil {
 	
 	//Return Excel data in Hash Map, containing Column names as Keys and Column values as List of values. 
 		public static Map<String,List<String>> getAllExcelDataInHashMap(String filePath, String fileName, String sheetName){
-			Map<String,List<String>> exlMapData = new HashMap<String,List<String>>();
+			Map<String,List<String>> exlMapData = new LinkedHashMap<String,List<String>>();
 			try {
 				List<String> headerData = getHeaders(filePath,fileName,sheetName);
 				for(String str: headerData) {
@@ -80,13 +83,30 @@ public class ExcelUtil {
 		return exlMapData;
 	}
 	
+	//Return Excel data in Hash Map, containing Column names as Keys and Column values as values [Row 0 as Headers and Row 1 as values]. 
+			public static Map<String,String> getExcelRowColDataInHashMap(String filePath, String fileName, String sheetName, int rowNo){
+				Map<String,String> exlMapData = new LinkedHashMap<String,String>();
+				try {
+					List<String> headerData = getHeaders(filePath,fileName,sheetName);
+					List<String> apiData = getExcelDataOfOneRow(filePath, fileName, sheetName, rowNo);
+					int colNo=0;
+					for(String str: headerData) {
+						exlMapData.put(str, apiData.get(colNo));
+						colNo++;
+					}
+				} catch (Exception e) {
+					System.out.println("Exception while getting All Excel Data from File {"+fileName+"} and Sheet {"+sheetName+"}. {}"+e.getStackTrace());
+				}
+			return exlMapData;
+		}
+	
 	//Returns the data of Any One Row. Row No is
 		public static List<String> getExcelDataOfOneRow(String filePath, String fileName, String sheetName, int rowNo) {
 			List<String> oneRowData = new ArrayList<String>();
 			try {
 				FileInputStream file = new FileInputStream(new File(filePath + "//" + fileName));
-				XSSFWorkbook workbook = new XSSFWorkbook(file);
-				XSSFSheet sheet = workbook.getSheet(sheetName);
+				HSSFWorkbook workbook = new HSSFWorkbook(file);
+				HSSFSheet sheet = workbook.getSheet(sheetName);
 				if (sheet == null) {
 					System.out.println("Couldn't locate Sheet {"+sheetName+"} in File {"+fileName+"}");
 					return oneRowData;
@@ -111,7 +131,7 @@ public class ExcelUtil {
 						oneRowData.add(null);
 						continue;
 					}
-
+					
 					if (cell.getCellTypeEnum() == CellType.NUMERIC)
 						oneRowData.add(Double.toString(cell.getNumericCellValue()));
 					else if (cell.getCellTypeEnum() == CellType.STRING)
@@ -123,7 +143,7 @@ public class ExcelUtil {
 				}
 				file.close();
 			} catch (Exception e) {
-				System.out.println("exception caught..");
+				System.out.println("exception caught.." + e.getStackTrace() + e.getMessage());
 			}
 			return oneRowData;
 		}
@@ -137,8 +157,8 @@ public class ExcelUtil {
 			List<String> columnData = new ArrayList<String>();
 			try {
 				FileInputStream file = new FileInputStream(new File(excelFilePath + "/" + excelFileName));
-				XSSFWorkbook workbook = new XSSFWorkbook(file);
-				XSSFSheet sheet = workbook.getSheet(sheetName);
+				HSSFWorkbook workbook = new HSSFWorkbook(file);
+				HSSFSheet sheet = workbook.getSheet(sheetName);
 				if (sheet == null) {
 					System.out.println("Couldn't locate Sheet {"+sheetName+"} in File {"+excelFileName+"}.");
 					return columnData;
@@ -172,8 +192,8 @@ public class ExcelUtil {
 			List<String> oneRowData;
 			try {
 				FileInputStream file = new FileInputStream(new File(filePath + "//" + fileName));
-				XSSFWorkbook workbook = new XSSFWorkbook(file);
-				XSSFSheet sheet = workbook.getSheet(sheetName);
+				HSSFWorkbook workbook = new HSSFWorkbook(file);
+				HSSFSheet sheet = workbook.getSheet(sheetName);
 				if (sheet == null) {
 					System.out.println("Couldn't locate Sheet {"+sheetName+"} in File {"+fileName+"}.");
 					return allData;
@@ -217,8 +237,8 @@ public class ExcelUtil {
 			List<String> oneRowData;
 			try {
 				FileInputStream file = new FileInputStream(new File(filePath + "//" + fileName));
-				XSSFWorkbook workbook = new XSSFWorkbook(file);
-				XSSFSheet sheet = workbook.getSheet(sheetName);
+				HSSFWorkbook workbook = new HSSFWorkbook(file);
+				HSSFSheet sheet = workbook.getSheet(sheetName);
 				if (sheet == null) {
 					System.out.println("Couldn't locate Sheet {"+sheetName+"} in File {"+fileName+"}.");
 					return allData;
@@ -275,8 +295,8 @@ public class ExcelUtil {
 			Long noOfRows = -1L;
 			try {
 				FileInputStream file = new FileInputStream(new File(excelFilePath + "/" + excelFileName));
-				XSSFWorkbook workbook = new XSSFWorkbook(file);
-				XSSFSheet sheet = workbook.getSheet(sheetName);
+				HSSFWorkbook workbook = new HSSFWorkbook(file);
+				HSSFSheet sheet = workbook.getSheet(sheetName);
 
 				noOfRows = Integer.toUnsignedLong(sheet.getPhysicalNumberOfRows());
 			} catch (Exception e) {

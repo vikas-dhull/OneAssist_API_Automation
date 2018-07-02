@@ -1,4 +1,4 @@
-package com.OneAssist.com.OneAssist_API_Automation.fileReader;
+package com.OneAssist.API_Automation.fileReader;
 
 import java.io.FileInputStream;
 import java.io.IOException;

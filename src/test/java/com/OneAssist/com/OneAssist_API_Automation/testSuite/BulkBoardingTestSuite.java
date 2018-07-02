@@ -25,7 +25,6 @@ import com.OneAssist.com.OneAssist_API_Automation.core.APIMethods;
 import com.OneAssist.com.OneAssist_API_Automation.core.ConfigDetails;
 import com.OneAssist.com.OneAssist_API_Automation.core.Response;
 import com.OneAssist.com.OneAssist_API_Automation.core.Xls_Reader;
-import com.OneAssist.com.OneAssist_API_Automation.pojoClasses.CreateRenewal;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -48,7 +47,7 @@ public class BulkBoardingTestSuite extends ConfigDetails {
 			e.printStackTrace();
 		}
 		
-		ObjectMapper mapper = new ObjectMapper();
+		/*ObjectMapper mapper = new ObjectMapper();
 		CreateRenewal customerRenewal = new CreateRenewal();
 		try {
 	        File jsonInputFile = new File(System.getProperty("user.dir")+ "\\sampleJSON");
@@ -57,7 +56,7 @@ public class BulkBoardingTestSuite extends ConfigDetails {
 	    } catch (IOException e) {
 	        // TODO Auto-generated catch block
 	        e.printStackTrace();
-	    }
+	    }*/
 		
 		/*List<CustomerDetail> customerDetails = new ArrayList<CustomerDetail>();
 		CustomerDetail customerDetail = new CustomerDetail("rekha","Kr","C","nimit.s@oneassist.in","7838692410","1001994495");
@@ -67,7 +66,7 @@ public class BulkBoardingTestSuite extends ConfigDetails {
 		PaymentInfo paymentInfo = new PaymentInfo("online");
 		CreateRenewal customerRenewal = new CreateRenewal(customerDetails,paymentInfo,orderInfo,assetDetails,"1001994495");*/
 		
-		Gson gson = new GsonBuilder().setPrettyPrinting().create();
+		/*Gson gson = new GsonBuilder().setPrettyPrinting().create();
 		reqJson = gson.toJson(customerRenewal);
 		System.out.println("request api data JSON: "+reqJson);
 		
@@ -90,7 +89,7 @@ public class BulkBoardingTestSuite extends ConfigDetails {
 			fileWriter.flush();
 		} catch (Exception e) {
 			e.printStackTrace();
-		}
+		}*/
 		
 		
 		/*try {
@@ -100,7 +99,7 @@ public class BulkBoardingTestSuite extends ConfigDetails {
 	        e.printStackTrace();  
 	    }*/
 
-		if(response.getStatusCode()==500) {
+		/*if(response.getStatusCode()==500) {
 			try {
 				method.createPOJOForJSON(System.getProperty("user.dir")+ "\\jsonResponse", "com.OneAssist.com.OneAssist_API_Automation.pojoResponseClasses", "CreateRenewalResponse");
 			} catch (Exception e) {
@@ -110,7 +109,7 @@ public class BulkBoardingTestSuite extends ConfigDetails {
 		
 		else {
 			// error handling for rest error codes..
-		}
+		}*/
 		
 	//	gson.fromJson(response.getResponse(), CreateRenewalResponse.class);
 

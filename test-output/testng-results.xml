@@ -2,16 +2,16 @@
 <testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="2334" started-at="2018-06-29T13:25:26Z" finished-at="2018-06-29T13:25:28Z">
+  <suite name="Default suite" duration-ms="2483" started-at="2018-07-02T14:06:14Z" finished-at="2018-07-02T14:06:16Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="2334" started-at="2018-06-29T13:25:26Z" finished-at="2018-06-29T13:25:28Z">
-      <class name="com.OneAssist.com.OneAssist_API_Automation.testSuite.BulkBoardingTestSuite">
-        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:com.OneAssist.com.OneAssist_API_Automation.testSuite.BulkBoardingTestSuite@223f3642]" name="beforeMethod" duration-ms="2312" started-at="2018-06-29T13:25:26Z" finished-at="2018-06-29T13:25:28Z">
+    <test name="Default test" duration-ms="2483" started-at="2018-07-02T14:06:14Z" finished-at="2018-07-02T14:06:16Z">
+      <class name="com.OneAssist.com.OneAssist_API_Automation.testSuite.TestBulkBoarding">
+        <test-method status="PASS" signature="testBulkBoardingOASYS()[pri:0, instance:com.OneAssist.com.OneAssist_API_Automation.testSuite.TestBulkBoarding@77cd7a0]" name="testBulkBoardingOASYS" duration-ms="2470" started-at="2018-07-02T14:06:14Z" finished-at="2018-07-02T14:06:16Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- beforeMethod -->
-      </class> <!-- com.OneAssist.com.OneAssist_API_Automation.testSuite.BulkBoardingTestSuite -->
+        </test-method> <!-- testBulkBoardingOASYS -->
+      </class> <!-- com.OneAssist.com.OneAssist_API_Automation.testSuite.TestBulkBoarding -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>
