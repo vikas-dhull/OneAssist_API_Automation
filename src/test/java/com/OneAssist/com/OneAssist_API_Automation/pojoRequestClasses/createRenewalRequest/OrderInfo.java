@@ -1,5 +1,5 @@
 
-package com.OneAssist.com.OneAssist_API_Automation.pojoClasses.createRenewal;
+package com.OneAssist.com.OneAssist_API_Automation.pojoRequestClasses.createRenewalRequest;
 
 import java.io.Serializable;
 import com.google.gson.annotations.Expose;
@@ -20,7 +20,7 @@ public class OrderInfo implements Serializable
     @SerializedName("partnerBUCode")
     @Expose
     private String partnerBUCode;
-    private final static long serialVersionUID = -512598703589931960L;
+    private final static long serialVersionUID = 3473893497511903383L;
 
     /**
      * No args constructor for use in serialization

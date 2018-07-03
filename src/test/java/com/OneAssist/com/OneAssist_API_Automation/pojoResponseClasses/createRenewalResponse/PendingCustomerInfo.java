@@ -1,5 +1,5 @@
 
-package com.OneAssist.com.OneAssist_API_Automation.pojoClasses.createRenewalResponse;
+package com.OneAssist.com.OneAssist_API_Automation.pojoResponseClasses.createRenewalResponse;
 
 import java.io.Serializable;
 import com.google.gson.annotations.Expose;
@@ -20,7 +20,7 @@ public class PendingCustomerInfo implements Serializable
     @SerializedName("activityReferenceId")
     @Expose
     private String activityReferenceId;
-    private final static long serialVersionUID = 4800652950867087339L;
+    private final static long serialVersionUID = 3511399805083468969L;
 
     /**
      * No args constructor for use in serialization

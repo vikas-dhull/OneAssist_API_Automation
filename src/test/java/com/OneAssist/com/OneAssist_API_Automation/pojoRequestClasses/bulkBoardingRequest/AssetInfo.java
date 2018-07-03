@@ -1,5 +1,5 @@
 
-package com.OneAssist.com.OneAssist_API_Automation.pojoClasses.BulkBoarding;
+package com.OneAssist.com.OneAssist_API_Automation.pojoRequestClasses.bulkBoardingRequest;
 
 import java.io.Serializable;
 import com.google.gson.annotations.Expose;
@@ -29,7 +29,7 @@ public class AssetInfo implements Serializable
     @SerializedName("serialNo1")
     @Expose
     private String serialNo1;
-    private final static long serialVersionUID = 3660888266006788615L;
+    private final static long serialVersionUID = 2742742084438425883L;
 
     /**
      * No args constructor for use in serialization

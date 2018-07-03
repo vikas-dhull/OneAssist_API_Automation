@@ -1,10 +1,14 @@
-package com.OneAssist.com.OneAssist_API_Automation.pojoClasses.BulkBoarding;
-
+package com.OneAssist.com.OneAssist_API_Automation.pojoHelperClasses;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 import com.OneAssist.API_Automation.helperClasses.JsonHelper;
+import com.OneAssist.com.OneAssist_API_Automation.pojoRequestClasses.bulkBoardingRequest.AssetInfo;
+import com.OneAssist.com.OneAssist_API_Automation.pojoRequestClasses.bulkBoardingRequest.BulkBoardingRequest;
+import com.OneAssist.com.OneAssist_API_Automation.pojoRequestClasses.bulkBoardingRequest.CustomerInfo;
+import com.OneAssist.com.OneAssist_API_Automation.pojoRequestClasses.bulkBoardingRequest.OrderInfo;
+import com.OneAssist.com.OneAssist_API_Automation.pojoRequestClasses.bulkBoardingRequest.PaymentInfo;
 
 
 public class BulkBoardingPojoHelper {
@@ -18,7 +22,7 @@ public class BulkBoardingPojoHelper {
 		List<AssetInfo> assetInfos = new ArrayList<AssetInfo>();
 		String reqJson;
 		
-		BulkBoarding bulkBoarding = new BulkBoarding();
+		BulkBoardingRequest bulkBoarding = new BulkBoardingRequest();
 		CustomerInfo customerInfo = new CustomerInfo();
 		AssetInfo assetInfo = new AssetInfo();
 		OrderInfo orderInfo = new OrderInfo();

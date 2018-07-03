@@ -25,5 +25,11 @@ public class APIHeaders {
 		return headers;
 	}
 	
+	public HashMap<String,String> addNewHeader(HashMap<String,String> existingHeaders,String key,String value)
+    {
+        existingHeaders.put(key, value);
+        return existingHeaders;
+    }
+	
 	
 }

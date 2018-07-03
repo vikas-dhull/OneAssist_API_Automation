@@ -1,17 +1,22 @@
-package com.OneAssist.com.OneAssist_API_Automation.pojoClasses.createRenewal;
+package com.OneAssist.com.OneAssist_API_Automation.pojoHelperClasses;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 import com.OneAssist.API_Automation.helperClasses.JsonHelper;
+import com.OneAssist.com.OneAssist_API_Automation.pojoRequestClasses.createRenewalRequest.CreateRenewalRequest;
+import com.OneAssist.com.OneAssist_API_Automation.pojoRequestClasses.createRenewalRequest.CustomerDetail;
+import com.OneAssist.com.OneAssist_API_Automation.pojoRequestClasses.createRenewalRequest.OrderInfo;
+import com.OneAssist.com.OneAssist_API_Automation.pojoRequestClasses.createRenewalRequest.PaymentInfo;
 
 public class CreateRenewalPojoHelper {
 
 	public static String setCreateRenewalPojo(Map<String, String> apiPayload) {
 		List<CustomerDetail> customerDetails = new ArrayList<CustomerDetail>();
 		String reqJson;
-		CreateRenewal createRenewal = new CreateRenewal();
+		
+		CreateRenewalRequest createRenewal = new CreateRenewalRequest();
 		CustomerDetail customerDetail = new CustomerDetail();
 		OrderInfo orderInfo = new OrderInfo();
 		PaymentInfo paymentInfo = new PaymentInfo();

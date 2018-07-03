@@ -1,5 +1,5 @@
 
-package com.OneAssist.com.OneAssist_API_Automation.pojoClasses.createRenewal;
+package com.OneAssist.com.OneAssist_API_Automation.pojoRequestClasses.bulkBoardingRequest;
 
 import java.io.Serializable;
 import com.google.gson.annotations.Expose;
@@ -14,7 +14,7 @@ public class PaymentInfo implements Serializable
     @SerializedName("paymentMode")
     @Expose
     private String paymentMode;
-    private final static long serialVersionUID = 8827347642668573075L;
+    private final static long serialVersionUID = -367349474075483719L;
 
     /**
      * No args constructor for use in serialization

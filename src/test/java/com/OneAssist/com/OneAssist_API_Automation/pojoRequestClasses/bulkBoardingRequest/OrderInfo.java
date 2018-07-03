@@ -1,5 +1,5 @@
 
-package com.OneAssist.com.OneAssist_API_Automation.pojoClasses.BulkBoarding;
+package com.OneAssist.com.OneAssist_API_Automation.pojoRequestClasses.bulkBoardingRequest;
 
 import java.io.Serializable;
 import com.google.gson.annotations.Expose;
@@ -20,7 +20,7 @@ public class OrderInfo implements Serializable
     @SerializedName("partnerBUCode")
     @Expose
     private Integer partnerBUCode;
-    private final static long serialVersionUID = 5053886938970953067L;
+    private final static long serialVersionUID = -6786532906766435766L;
 
     /**
      * No args constructor for use in serialization

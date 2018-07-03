@@ -1,5 +1,5 @@
 
-package com.OneAssist.com.OneAssist_API_Automation.pojoClasses.createRenewal;
+package com.OneAssist.com.OneAssist_API_Automation.pojoRequestClasses.createRenewalRequest;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -10,7 +10,7 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
-public class CreateRenewal implements Serializable
+public class CreateRenewalRequest implements Serializable
 {
 
     @SerializedName("customerDetails")
@@ -31,13 +31,13 @@ public class CreateRenewal implements Serializable
     @SerializedName("membershipId")
     @Expose
     private String membershipId;
-    private final static long serialVersionUID = 3803755785053765656L;
+    private final static long serialVersionUID = 5420582540388365739L;
 
     /**
      * No args constructor for use in serialization
      * 
      */
-    public CreateRenewal() {
+    public CreateRenewalRequest() {
     }
 
     /**
@@ -49,7 +49,7 @@ public class CreateRenewal implements Serializable
      * @param userId
      * @param paymentInfo
      */
-    public CreateRenewal(List<CustomerDetail> customerDetails, PaymentInfo paymentInfo, OrderInfo orderInfo, String initiatingSystem, String userId, String membershipId) {
+    public CreateRenewalRequest(List<CustomerDetail> customerDetails, PaymentInfo paymentInfo, OrderInfo orderInfo, String initiatingSystem, String userId, String membershipId) {
         super();
         this.customerDetails = customerDetails;
         this.paymentInfo = paymentInfo;
@@ -122,10 +122,10 @@ public class CreateRenewal implements Serializable
         if (other == this) {
             return true;
         }
-        if ((other instanceof CreateRenewal) == false) {
+        if ((other instanceof CreateRenewalRequest) == false) {
             return false;
         }
-        CreateRenewal rhs = ((CreateRenewal) other);
+        CreateRenewalRequest rhs = ((CreateRenewalRequest) other);
         return new EqualsBuilder().append(customerDetails, rhs.customerDetails).append(paymentInfo, rhs.paymentInfo).append(orderInfo, rhs.orderInfo).append(initiatingSystem, rhs.initiatingSystem).append(userId, rhs.userId).append(membershipId, rhs.membershipId).isEquals();
     }
 

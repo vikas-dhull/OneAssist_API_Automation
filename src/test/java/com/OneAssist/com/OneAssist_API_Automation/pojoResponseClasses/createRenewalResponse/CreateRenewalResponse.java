@@ -1,5 +1,5 @@
 
-package com.OneAssist.com.OneAssist_API_Automation.pojoClasses.createRenewalResponse;
+package com.OneAssist.com.OneAssist_API_Automation.pojoResponseClasses.createRenewalResponse;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -46,7 +46,7 @@ public class CreateRenewalResponse implements Serializable
     @SerializedName("message")
     @Expose
     private String message;
-    private final static long serialVersionUID = -2844484202361114893L;
+    private final static long serialVersionUID = -8641626276856209216L;
 
     /**
      * No args constructor for use in serialization

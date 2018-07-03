@@ -1,5 +1,5 @@
 
-package com.OneAssist.com.OneAssist_API_Automation.pojoClasses.BulkBoarding;
+package com.OneAssist.com.OneAssist_API_Automation.pojoRequestClasses.bulkBoardingRequest;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -10,7 +10,7 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
-public class BulkBoarding implements Serializable
+public class BulkBoardingRequest implements Serializable
 {
 
     @SerializedName("initiatingSystem")
@@ -28,13 +28,13 @@ public class BulkBoarding implements Serializable
     @SerializedName("paymentInfo")
     @Expose
     private PaymentInfo paymentInfo;
-    private final static long serialVersionUID = 2873100192317090201L;
+    private final static long serialVersionUID = 3420202998117678556L;
 
     /**
      * No args constructor for use in serialization
      * 
      */
-    public BulkBoarding() {
+    public BulkBoardingRequest() {
     }
 
     /**
@@ -45,7 +45,7 @@ public class BulkBoarding implements Serializable
      * @param customerInfo
      * @param paymentInfo
      */
-    public BulkBoarding(Integer initiatingSystem, Object action, List<CustomerInfo> customerInfo, OrderInfo orderInfo, PaymentInfo paymentInfo) {
+    public BulkBoardingRequest(Integer initiatingSystem, Object action, List<CustomerInfo> customerInfo, OrderInfo orderInfo, PaymentInfo paymentInfo) {
         super();
         this.initiatingSystem = initiatingSystem;
         this.action = action;
@@ -109,10 +109,10 @@ public class BulkBoarding implements Serializable
         if (other == this) {
             return true;
         }
-        if ((other instanceof BulkBoarding) == false) {
+        if ((other instanceof BulkBoardingRequest) == false) {
             return false;
         }
-        BulkBoarding rhs = ((BulkBoarding) other);
+        BulkBoardingRequest rhs = ((BulkBoardingRequest) other);
         return new EqualsBuilder().append(initiatingSystem, rhs.initiatingSystem).append(action, rhs.action).append(customerInfo, rhs.customerInfo).append(orderInfo, rhs.orderInfo).append(paymentInfo, rhs.paymentInfo).isEquals();
     }
 

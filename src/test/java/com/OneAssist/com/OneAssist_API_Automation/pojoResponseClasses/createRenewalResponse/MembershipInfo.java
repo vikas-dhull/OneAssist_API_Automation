@@ -1,5 +1,5 @@
 
-package com.OneAssist.com.OneAssist_API_Automation.pojoClasses.createRenewalResponse;
+package com.OneAssist.com.OneAssist_API_Automation.pojoResponseClasses.createRenewalResponse;
 
 import java.io.Serializable;
 import com.google.gson.annotations.Expose;
@@ -26,7 +26,7 @@ public class MembershipInfo implements Serializable
     @SerializedName("secondaryCustomerId")
     @Expose
     private Object secondaryCustomerId;
-    private final static long serialVersionUID = 1105868951935708094L;
+    private final static long serialVersionUID = -5890434334096467605L;
 
     /**
      * No args constructor for use in serialization

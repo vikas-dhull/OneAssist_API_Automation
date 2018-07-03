@@ -1,5 +1,5 @@
 
-package com.OneAssist.com.OneAssist_API_Automation.pojoClasses.BulkBoarding;
+package com.OneAssist.com.OneAssist_API_Automation.pojoRequestClasses.bulkBoardingRequest;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -25,7 +25,7 @@ public class CustomerInfo implements Serializable
     @SerializedName("assetInfo")
     @Expose
     private List<AssetInfo> assetInfo = new ArrayList<AssetInfo>();
-    private final static long serialVersionUID = 537051830100275118L;
+    private final static long serialVersionUID = -2033182293203360346L;
 
     /**
      * No args constructor for use in serialization

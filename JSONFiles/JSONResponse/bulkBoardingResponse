@@ -1,0 +1,29 @@
+{
+"payNowLink":"https://qa4.1atesting.in/OASYS/paynow?token=ztGu31Gc6xw%3D",
+"isMotoPayment":"yes",
+"paymentMode":"COD",
+"isMailSent":"N",
+"customerOrderInfo":{
+	"discount":0.0,
+	"orderId":0,
+	"planName":"MA Damage NonApple D2C 8k-12k",
+	"taxAmount":0.0,
+	"price":999.0},
+	"membershipInfo":{
+		"membershipNumber":null,
+		"startDate":"03-Jul-2018",
+		"endDate":"02-Jul-2019",
+		"primaryCustomerId":null,
+		"secondaryCustomerId":null},
+		"pendingCustomerInfo":[{
+			"customerTempId":0,
+			"previousCustomerId":null,
+			"activityReferenceId":null}],
+		"productInfo":[{"productCode":"MP01",
+			"productName":"MobileAssist",
+			"categoryCode":"PE"}],
+		"primaryCustomerName":"Mandatory",
+		"secondaryCustomerName":null,
+		"status":"success",
+		"message":"PENDING_CUSTOMER_CREATED_SUCCESSFULLY"
+}

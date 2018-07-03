@@ -10,6 +10,7 @@ import com.google.gson.GsonBuilder;
 public class JsonHelper {
 
 	static Gson gsonObj;
+	
 	public JsonHelper() {
 		super();
 	}
@@ -46,5 +47,9 @@ public class JsonHelper {
             }
 		}
 		return mapData;
+	}
+	
+	public static <T> T setResponsePojoClass(String json, Class<T> classOfT) {
+		return gsonObj.fromJson(json, classOfT);
 	}
 }
