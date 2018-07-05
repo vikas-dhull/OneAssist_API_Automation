@@ -91,8 +91,13 @@ public class ExcelUtil {
 				List<String> apiData = getExcelDataOfOneRow(filePath, fileName, sheetName, rowNo);
 				int colNo=0;
 				for(String str: headerData) {
+					if("SKIP".equalsIgnoreCase(apiData.get(colNo)))
+						continue;
+					else if("NULL".equalsIgnoreCase(apiData.get(colNo)))
+						exlMapData.put(str, null);
+					else
+						exlMapData.put(str, apiData.get(colNo));
 					
-					exlMapData.put(str, apiData.get(colNo));
 					colNo++;
 				}
 			} catch (Exception e) {
