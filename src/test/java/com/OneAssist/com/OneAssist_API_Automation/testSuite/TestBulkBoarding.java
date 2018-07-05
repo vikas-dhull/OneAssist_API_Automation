@@ -69,7 +69,7 @@ public class TestBulkBoarding {
 		BulkBoardingResponse bulkBoardingResp = JsonHelper.setResponsePojoClass(responseStringJson, BulkBoardingResponse.class);		
 		System.out.println("JSON response : " + response.getResponse());
 		
-		if(response.getStatusCode()==200 ) {
+		if(response.getStatusCode()==200) {
 			if(bulkBoardingResp != null) {
 				softAssert.assertTrue("success".equals(bulkBoardingResp.getStatus()), 
 						"Invalid status received in response..{"+bulkBoardingResp.getStatus()+"}.");

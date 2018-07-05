@@ -4,28 +4,24 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.Date;
+
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-
-import javax.swing.plaf.synth.SynthSeparatorUI;
-
-import org.apache.poi.EncryptedDocumentException;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
-import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
-import org.apache.poi.ss.usermodel.WorkbookFactory;
-import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import com.OneAssist.API_Automation.helperClasses.HelperFunctions;
 
 public class ExcelUtil {
 	
@@ -91,12 +87,30 @@ public class ExcelUtil {
 				List<String> apiData = getExcelDataOfOneRow(filePath, fileName, sheetName, rowNo);
 				int colNo=0;
 				for(String str: headerData) {
-					if("SKIP".equalsIgnoreCase(apiData.get(colNo)))
+					if("SKIP".equalsIgnoreCase(apiData.get(colNo))) {
+						colNo++;
 						continue;
-					else if("NULL".equalsIgnoreCase(apiData.get(colNo)))
+					}						
+					else if("NULL".equalsIgnoreCase(apiData.get(colNo))) {
 						exlMapData.put(str, null);
-					else
+					}						
+					else if("SYSDATE".equalsIgnoreCase(apiData.get(colNo))) {
+						Date date = new Date();  
+					    SimpleDateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy");  
+					    String strDate = formatter.format(date);
+					    exlMapData.put(str, strDate);
+					}						
+					else if("EMAIL".equalsIgnoreCase(apiData.get(colNo))) {
+						String email = "email" + LocalDateTime.now()+"@mailinator.com";
+						exlMapData.put(str, email);
+					}						
+					else if("MOBILE".equalsIgnoreCase(apiData.get(colNo))) {
+						String mob = "54321"+HelperFunctions.getRandomNumberInRange(11111, 99999);
+						exlMapData.put(str, mob);
+					}
+					else {
 						exlMapData.put(str, apiData.get(colNo));
+					}
 					
 					colNo++;
 				}
