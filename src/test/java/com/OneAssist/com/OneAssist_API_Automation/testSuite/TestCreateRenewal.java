@@ -8,6 +8,8 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
+
 import com.OneAssist.com.OneAssist_API_Automation.core.APIHeaders;
 import com.OneAssist.com.OneAssist_API_Automation.core.APIMethods;
 import com.OneAssist.com.OneAssist_API_Automation.core.Response;
@@ -55,7 +57,7 @@ public class TestCreateRenewal {
 	public void testCreateRenewalOASYS(String baseURL, String resourceURL, String header1, String header2, String Auth, Map<String, String> payloadData) 
 			throws MalformedURLException, URISyntaxException, IOException {
 		
-		
+		SoftAssert softAssert = new SoftAssert();
 		String str = JsonHelper.getJsonStringFromMapData(payloadData);
 		System.out.println("request api data JSON: " + str);
 		
@@ -72,18 +74,19 @@ public class TestCreateRenewal {
 		
 		if(response.getStatusCode()==200) {
 			if(createRenewalResp != null)
-				Assert.assertTrue(createRenewalResp.getMessage().contains("PENDING_CUSTOMER_CREATED_SUCCESSFULLY"), "success message is wrong..");
+				softAssert.assertTrue(createRenewalResp.getMessage().contains("PENDING_CUSTOMER_CREATED_SUCCESSFULLY"), "success message is wrong..");
 			else
-				Assert.assertTrue(false, "Something went wrong, Response is not expected, found as NULL.." + 
+				softAssert.assertTrue(false, "Something went wrong, Response is not expected, found as NULL.." + 
 						"{"+response.getStatusCode() + "}. {"+response.getResponse()+"}. ");
 		}
 		else if(response.getStatusCode()==500){
-			Assert.assertTrue(false, "Internal server error. Expected status code not returned.." + 
+			softAssert.assertTrue(false, "Internal server error. Expected status code not returned.." + 
 					"{"+response.getStatusCode());
 		}
 		else {
-			Assert.assertTrue(false, "Something went wrong, Response is not expected.." + 
+			softAssert.assertTrue(false, "Something went wrong, Response is not expected.." + 
 					"{"+response.getStatusCode() + "}. {"+response.getResponse()+"}. ");
 		}
+		softAssert.assertAll();
 	}
 }

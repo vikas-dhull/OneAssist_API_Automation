@@ -16,46 +16,29 @@ public class BulkBoardingPojoHelper {
 	BulkBoardingPojoHelper(){
 		super();
 	}
-
+	
 	public static String setBulkBoardingPojo(Map<String, String> apiPayload) {
+		String reqJson;
 		List<CustomerInfo> customerInfos = new ArrayList<CustomerInfo>();
 		List<AssetInfo> assetInfos = new ArrayList<AssetInfo>();
-		String reqJson;
+
 		
-		BulkBoardingRequest bulkBoarding = new BulkBoardingRequest();
-		CustomerInfo customerInfo = new CustomerInfo();
-		AssetInfo assetInfo = new AssetInfo();
-		OrderInfo orderInfo = new OrderInfo();
-		PaymentInfo paymentInfo = new PaymentInfo();
-		
-		customerInfo.setFirstName(apiPayload.get("firstName"));
-		customerInfo.setMobileNumber(Long.parseLong(apiPayload.get("mobileNumber")));
-		customerInfo.setRelationship(apiPayload.get("relationship"));
-		customerInfo.setAssetInfo(assetInfos);
-		customerInfos.add(customerInfo);
-		
-		assetInfo.setAssetMake(apiPayload.get("assetMake"));
-		assetInfo.setAssetModel(apiPayload.get("assetModel"));
-		assetInfo.setInvoiceDate(apiPayload.get("invoiceDate"));
-		assetInfo.setInvoiceValue(Integer.parseInt(apiPayload.get("invoiceValue")));
-		assetInfo.setProductCode(apiPayload.get("productCode"));
-		assetInfo.setSerialNo1(apiPayload.get("serialNo1"));
+		AssetInfo assetInfo = new AssetInfo(apiPayload.get("productCode"),apiPayload.get("assetMake"),apiPayload.get("assetModel"),
+				apiPayload.get("invoiceDate"),Integer.parseInt(apiPayload.get("invoiceValue")),apiPayload.get("serialNo1"));
 		assetInfos.add(assetInfo);
 		
-		orderInfo.setPlanCode(Integer.parseInt(apiPayload.get("planCode")));
-		orderInfo.setPartnerCode(Integer.parseInt(apiPayload.get("partnerCode")));
-		orderInfo.setPartnerBUCode(Integer.parseInt(apiPayload.get("partnerBUCode")));
+		CustomerInfo customerInfo = new CustomerInfo(apiPayload.get("firstName"),Long.parseLong(apiPayload.get("mobileNumber")),
+				apiPayload.get("relationship"),assetInfos);
+		customerInfos.add(customerInfo);
 		
-		paymentInfo.setPaymentMode(apiPayload.get("paymentMode"));
+		OrderInfo orderInfo = new OrderInfo(Integer.parseInt(apiPayload.get("planCode")),Integer.parseInt(apiPayload.get("partnerCode")),
+				Integer.parseInt(apiPayload.get("partnerBUCode")));
+		PaymentInfo paymentInfo = new PaymentInfo(apiPayload.get("paymentMode"));
 		
-		bulkBoarding.setInitiatingSystem(Integer.parseInt(apiPayload.get("initiatingSystem")));
-		bulkBoarding.setAction(apiPayload.get("action"));
-		bulkBoarding.setCustomerInfo(customerInfos);
-		bulkBoarding.setOrderInfo(orderInfo);
-		bulkBoarding.setPaymentInfo(paymentInfo);
+		BulkBoardingRequest bulkBoarding = new BulkBoardingRequest(Integer.parseInt(apiPayload.get("initiatingSystem")),apiPayload.get("action"),
+				customerInfos,orderInfo,paymentInfo);
 		
-		reqJson = JsonHelper.getJsonStringFromJsonObject(bulkBoarding);
-		
+		reqJson = JsonHelper.getJsonStringFromJsonObject(bulkBoarding);		
 		return reqJson;
 	}
 }

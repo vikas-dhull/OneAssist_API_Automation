@@ -83,22 +83,23 @@ public class ExcelUtil {
 		return exlMapData;
 	}
 	
-	//Return Excel data in Hash Map, containing Column names as Keys and Column values as values [Row 0 as Headers and Row 1 as values]. 
-			public static Map<String,String> getExcelRowColDataInHashMap(String filePath, String fileName, String sheetName, int rowNo){
-				Map<String,String> exlMapData = new LinkedHashMap<String,String>();
-				try {
-					List<String> headerData = getHeaders(filePath,fileName,sheetName);
-					List<String> apiData = getExcelDataOfOneRow(filePath, fileName, sheetName, rowNo);
-					int colNo=0;
-					for(String str: headerData) {
-						exlMapData.put(str, apiData.get(colNo));
-						colNo++;
-					}
-				} catch (Exception e) {
-					System.out.println("Exception while getting All Excel Data from File {"+fileName+"} and Sheet {"+sheetName+"}. {}"+e.getStackTrace());
+	//Return Excel data in Hash Map, containing Column names as Keys and Column values as values [Row 1 as Headers and Row 2{rowNo} as values]. 
+		public static Map<String,String> getExcelRowColDataInHashMap(String filePath, String fileName, String sheetName, int rowNo){
+			Map<String,String> exlMapData = new LinkedHashMap<String,String>();
+			try {
+				List<String> headerData = getHeaders(filePath,fileName,sheetName);
+				List<String> apiData = getExcelDataOfOneRow(filePath, fileName, sheetName, rowNo);
+				int colNo=0;
+				for(String str: headerData) {
+					
+					exlMapData.put(str, apiData.get(colNo));
+					colNo++;
 				}
-			return exlMapData;
-		}
+			} catch (Exception e) {
+				System.out.println("Exception while getting All Excel Data from File {"+fileName+"} and Sheet {"+sheetName+"}. {}"+e.getStackTrace());
+			}
+		return exlMapData;
+	}
 	
 	//Returns the data of Any One Row. Row No is
 		public static List<String> getExcelDataOfOneRow(String filePath, String fileName, String sheetName, int rowNo) {

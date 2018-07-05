@@ -8,6 +8,8 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
+
 import com.OneAssist.API_Automation.fileReader.ExcelUtil;
 import com.OneAssist.API_Automation.helperClasses.JsonHelper;
 import com.OneAssist.API_Automation.helperClasses.URLProvider;
@@ -55,7 +57,7 @@ public class TestBulkBoarding {
 	public void testBulkBoardingOASYS(String baseURL, String resourceURL, String header1, String header2, String Auth, Map<String, String> payloadData) 
 			throws MalformedURLException, URISyntaxException, IOException {
 		
-		
+		SoftAssert softAssert = new SoftAssert();
 		String str = JsonHelper.getJsonStringFromMapData(payloadData);
 		System.out.println("JSON request : " + str);		
 		String reqJson=BulkBoardingPojoHelper.setBulkBoardingPojo(payloadData);		
@@ -69,24 +71,25 @@ public class TestBulkBoarding {
 		
 		if(response.getStatusCode()==200 ) {
 			if(bulkBoardingResp != null) {
-				Assert.assertTrue("success".equals(bulkBoardingResp.getStatus()), 
+				softAssert.assertTrue("success".equals(bulkBoardingResp.getStatus()), 
 						"Invalid status received in response..{"+bulkBoardingResp.getStatus()+"}.");
-				Assert.assertTrue(bulkBoardingResp.getPayNowLink().contains("paynow?"), 
+				softAssert.assertTrue(bulkBoardingResp.getPayNowLink().contains("paynow?"), 
 						"link is not valid..{"+bulkBoardingResp.getPayNowLink()+"}.");
-				Assert.assertTrue(bulkBoardingResp.getMessage().contains("PENDING_CUSTOMER_CREATED_SUCCESSFULLY"), 
+				softAssert.assertTrue(bulkBoardingResp.getMessage().contains("PENDING_CUSTOMER_CREATED_SUCCESSFULLY"), 
 						"success message is wrong..{"+bulkBoardingResp.getMessage()+"}.");
 			} else {
-				Assert.assertTrue(false, "Something went wrong, Response is not expected, found as NULL.." + 
+				softAssert.assertTrue(false, "Something went wrong, Response is not expected, found as NULL.." + 
 						"{"+response.getStatusCode() + "}. {"+response.getResponse()+"}. ");
 			}
 		} 
 		else if(response.getStatusCode()==500){
-			Assert.assertTrue(false, "Internal server error. Expected status code not returned.." + 
+			softAssert.assertTrue(false, "Internal server error. Expected status code not returned.." + 
 					"{"+response.getStatusCode());
 		}
 		else {
-			Assert.assertTrue(false, "Something went wrong, Response is not expected.." + 
+			softAssert.assertTrue(false, "Something went wrong, Response is not expected.." + 
 					"{"+response.getStatusCode() + "}. {"+response.getResponse()+"}. ");
 		}
+		softAssert.assertAll();
 	}
 }
