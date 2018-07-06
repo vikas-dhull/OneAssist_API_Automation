@@ -22,6 +22,10 @@ public class JsonHelper {
 	}
 	
 	public static String getJsonStringFromMapData(Map<String,String> mapData) {
+		/*for(Map.Entry<String,String> entry : mapData.entrySet()) {
+            System.out.println("Key = " + entry.getKey() +
+                             ", Value = " + entry.getValue());
+		}*/
 		String jsonStr = gsonObj.toJson(mapData);
 		System.out.println(jsonStr);
 		return jsonStr;

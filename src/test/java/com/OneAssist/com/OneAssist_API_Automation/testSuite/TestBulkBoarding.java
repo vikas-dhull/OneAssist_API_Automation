@@ -73,7 +73,7 @@ public class TestBulkBoarding {
 			if(bulkBoardingResp != null) {
 				softAssert.assertTrue("success".equals(bulkBoardingResp.getStatus()), 
 						"Invalid status received in response..{"+bulkBoardingResp.getStatus()+"}.");
-				softAssert.assertTrue(bulkBoardingResp.getPayNowLink().contains("paynow?"), 
+				softAssert.assertTrue(bulkBoardingResp.getPayNowLink()!=null && bulkBoardingResp.getPayNowLink().contains("paynow?"), 
 						"link is not valid..{"+bulkBoardingResp.getPayNowLink()+"}.");
 				softAssert.assertTrue(bulkBoardingResp.getMessage().contains("PENDING_CUSTOMER_CREATED_SUCCESSFULLY"), 
 						"success message is wrong..{"+bulkBoardingResp.getMessage()+"}.");

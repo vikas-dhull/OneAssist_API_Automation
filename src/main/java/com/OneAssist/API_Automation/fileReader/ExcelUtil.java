@@ -82,18 +82,26 @@ public class ExcelUtil {
 	//Return Excel data in Hash Map, containing Column names as Keys and Column values as values [Row 1 as Headers and Row 2{rowNo} as values]. 
 		public static Map<String,String> getExcelRowColDataInHashMap(String filePath, String fileName, String sheetName, int rowNo){
 			Map<String,String> exlMapData = new LinkedHashMap<String,String>();
+			int colNo=0;
 			try {
 				List<String> headerData = getHeaders(filePath,fileName,sheetName);
-				List<String> apiData = getExcelDataOfOneRow(filePath, fileName, sheetName, rowNo);
-				int colNo=0;
+				List<String> apiData = getExcelDataOfOneRow(filePath, fileName, sheetName, rowNo);				
+				
+				/*for(String str: apiData) {
+					System.out.println("api data : " + str);
+				}*/
+				
 				for(String str: headerData) {
 					if("SKIP".equalsIgnoreCase(apiData.get(colNo))) {
 						colNo++;
 						continue;
 					}						
-					else if("NULL".equalsIgnoreCase(apiData.get(colNo))) {
+					/*else if("NULL".equalsIgnoreCase(apiData.get(colNo))) {
 						exlMapData.put(str, null);
-					}						
+					}*/
+					else if("BLANK".equalsIgnoreCase(apiData.get(colNo))) {
+						exlMapData.put(str, "");
+					}
 					else if("SYSDATE".equalsIgnoreCase(apiData.get(colNo))) {
 						Date date = new Date();  
 					    SimpleDateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy");  
@@ -115,7 +123,7 @@ public class ExcelUtil {
 					colNo++;
 				}
 			} catch (Exception e) {
-				System.out.println("Exception while getting All Excel Data from File {"+fileName+"} and Sheet {"+sheetName+"}. {}"+e.getStackTrace());
+				System.out.println("Exception while getting All Excel Data from File {"+fileName+"} and Sheet {"+sheetName+"}. {"+colNo+"}"+e.getStackTrace());
 			}
 		return exlMapData;
 	}
