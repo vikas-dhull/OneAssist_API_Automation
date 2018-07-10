@@ -123,6 +123,7 @@ public class ExcelUtil {
 					colNo++;
 				}
 			} catch (Exception e) {
+				
 				System.out.println("Exception while getting All Excel Data from File {"+fileName+"} and Sheet {"+sheetName+"}. {"+colNo+"}"+e.getStackTrace());
 			}
 		return exlMapData;
@@ -319,14 +320,14 @@ public class ExcelUtil {
 			return allData;
 		}
 
-		public static Long getNoOfRows(String excelFilePath, String excelFileName, String sheetName) {
-			Long noOfRows = -1L;
+		public static int getNoOfRows(String excelFilePath, String excelFileName, String sheetName) {
+			int noOfRows = 0;
 			try {
 				FileInputStream file = new FileInputStream(new File(excelFilePath + "/" + excelFileName));
 				HSSFWorkbook workbook = new HSSFWorkbook(file);
 				HSSFSheet sheet = workbook.getSheet(sheetName);
 
-				noOfRows = Integer.toUnsignedLong(sheet.getPhysicalNumberOfRows());
+				noOfRows = (sheet.getPhysicalNumberOfRows());
 			} catch (Exception e) {
 				System.out.println("Exception while getting Total No of Rows in Excel Sheet {"+sheetName+"}" + e.getStackTrace());
 			}

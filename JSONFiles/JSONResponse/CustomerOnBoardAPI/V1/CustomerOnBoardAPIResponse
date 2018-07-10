@@ -1,0 +1,69 @@
+{
+    "payNowLink": "https://qa3.1atesting.in/OASYS/paynow?token=8DLMmyU7j6FCMd%2BnT4wEaxwq%2FJSfZwOU",
+    "isMotoPayment": "yes",
+    "paymentMode": "CHQ",
+    "isMailSent": "N",
+    "customerOrderInfo": {
+        "discount": 0,
+        "orderId": 6582689,
+        "planName": "HomeServ With Inspection New",
+        "taxAmount": 0,
+        "price": 1199
+    },
+    "membershipInfo": {
+        "membershipNumber": null,
+        "startDate": "06-Jul-2018",
+        "endDate": "05-Jul-2019",
+        "primaryCustomerId": null,
+        "secondaryCustomerId": null
+    },
+    "pendingCustomerInfo": [
+        {
+            "customerTempId": 2869269,
+            "previousCustomerId": 2869130,
+            "activityReferenceId": "5b3f098be4b057b1c21f85be"
+        }
+    ],
+    "productInfo": [
+        {
+            "productCode": "WM",
+            "productName": "Washing Machine",
+            "categoryCode": "HA"
+        },
+        {
+            "productCode": "AC",
+            "productName": "Air Conditioner",
+            "categoryCode": "HA"
+        },
+        {
+            "productCode": "REF",
+            "productName": "Refrigerator",
+            "categoryCode": "HA"
+        },
+        {
+            "productCode": "HT",
+            "productName": "Home Theatre",
+            "categoryCode": "HA"
+        },
+        {
+            "productCode": "TV",
+            "productName": "Television",
+            "categoryCode": "HA"
+        },
+        {
+            "productCode": "WDIS",
+            "productName": "Water Dispenser",
+            "categoryCode": "HA"
+        },
+        {
+            "productCode": "ACOOL",
+            "productName": "Air Cooler",
+            "categoryCode": "HA"
+        }
+    ],
+    "primaryCustomerName": "Mandatory",
+    "secondaryCustomerName": null,
+    "status": "success",
+    "message": "PENDING_CUSTOMER_CREATED_SUCCESSFULLY",
+    "errors": null
+}

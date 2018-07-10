@@ -12,32 +12,35 @@ import com.OneAssist.com.OneAssist_API_Automation.pojoRequestClasses.bulkBoardin
 
 
 public class BulkBoardingPojoHelper {
-	
+
 	BulkBoardingPojoHelper(){
 		super();
 	}
-	
+
 	public static String setBulkBoardingPojo(Map<String, String> apiPayload) {
 		String reqJson;
 		List<CustomerInfo> customerInfos = new ArrayList<CustomerInfo>();
 		List<AssetInfo> assetInfos = new ArrayList<AssetInfo>();
 
-		
-		AssetInfo assetInfo = new AssetInfo(apiPayload.get("productCode"),apiPayload.get("assetMake"),apiPayload.get("assetModel"),
-				apiPayload.get("invoiceDate"),Integer.parseInt(apiPayload.get("invoiceValue")),apiPayload.get("serialNo1"));
+
+		AssetInfo assetInfo = new AssetInfo(apiPayload.get("productCode"),apiPayload.get("assetMake"),
+				apiPayload.get("assetModel"),
+				apiPayload.get("invoiceDate"),
+				Integer.parseInt(apiPayload.get("invoiceValue")),
+				apiPayload.get("serialNo1"));
 		assetInfos.add(assetInfo);
-		
+
 		CustomerInfo customerInfo = new CustomerInfo(apiPayload.get("firstName"),Long.parseLong(apiPayload.get("mobileNumber")),
 				apiPayload.get("relationship"),assetInfos);
 		customerInfos.add(customerInfo);
-		
+
 		OrderInfo orderInfo = new OrderInfo(Integer.parseInt(apiPayload.get("planCode")),Integer.parseInt(apiPayload.get("partnerCode")),
 				Integer.parseInt(apiPayload.get("partnerBUCode")));
 		PaymentInfo paymentInfo = new PaymentInfo(apiPayload.get("paymentMode"));
-		
+
 		BulkBoardingRequest bulkBoarding = new BulkBoardingRequest(Integer.parseInt(apiPayload.get("initiatingSystem")),apiPayload.get("action"),
 				customerInfos,orderInfo,paymentInfo);
-		
+
 		reqJson = JsonHelper.getJsonStringFromJsonObject(bulkBoarding);		
 		return reqJson;
 	}
