@@ -1,0 +1,101 @@
+{
+"initiatingSystem": 5,
+"action":"save",
+"activityReferenceId":"",
+
+"customerInfo": [{
+"salutation":"",
+"firstName": "ravinder kumar",
+"middleName":"CFERE",
+"lastName":"FGFDDFF",
+"customerTempId":"1123453",
+
+"emailId": "dntReg6@tez.com",
+"mobileNumber": 1111398364,
+"gender": "MALE",
+"relationship": "self",
+"customerdob": "20-SEP-1987",
+"panCard":"UYTFVBKJDJ6677",
+"dlNo":"TIUDEHIU56DGDF",
+"passport":"shgu&3468ndsm",
+"aadharId":"123456789098",
+"previousCustomerId":"23434",
+"documentDownload":"345432",
+"assetInfo": [{
+"customerRelationType":"",
+"productCode": "REF",
+"assetMake": "LG",
+"assetModel": "model1",
+"invoiceDate":"dd-MMM-YYYY",
+"invoiceValue":1,
+"serialNo1": "11111111111",
+"serialNo2": "11111111111",
+"warrantyPeriod":12,
+"productName":"",
+"categoryCode":"",
+"technology":"",
+"age": "6",
+"size": "0-20",
+"sizeUnit": "INCH"
+}]
+}],
+"addressInfo": [{
+"addrType": "INSPECTION",
+"addrLine1": "Address1",
+"addrLine2":"",
+"landmark": "landmark",
+"pinCode": "110016",
+"cityCode": "DL",
+"stateCode": "DL",
+"telNo":"343432343",
+"stdCode":"34332",
+"isMailingAddress":""
+}],
+"orderInfo": {
+"orderId":123456,
+"memStartDate":"",
+"planCode": 729,
+"promoCode":123456,
+"partnerCode": 135,
+"partnerBUCode": 1552,
+"applicationNo": "234355",
+"applicationDate": "20-APR-2018"
+},
+"paymentInfo": {
+"mid":"0000629",
+"acquirer":"ICICI",
+"accountNo":"4567898765678",
+"accountHolderName":"DDDDDD DDDDD",
+"accountType":"savings",
+"ifscCode":"ICICI00329",
+"issueOnBranch":"karrahi",
+"ecsStartDate":"25-JUN-2018",
+"ecsEndDate":"25-JUN-2018",
+"chequeNo":"34565456456",
+"micrNo":"BNFNF67",
+"expiryMonth":"02",
+"expiryYear":"2018",
+"issuerBank":"ICICI",
+"paymentStatus":"Success",
+"cardLevel":"Amex",
+"paymentMode": "COD"
+},
+
+"utmParamInfo":{
+
+"utmSource":"",
+"adGroup":"",
+"crmAgent":"",
+"leadSource":"",
+"leadCreatedDate":"",
+"utmCampaign":"",
+"utmContent":"",
+"utmTerm":"",
+"url":"",
+"utmMedium":""
+
+
+
+}
+}
+
