@@ -27,17 +27,17 @@ public class CustomerOnBoarding extends ConfigDetails{
 	APIHeaders apiheaders;
 	APIMethods method;
 	
-	@Test
+	@BeforeClass
 	public void setup() {
 		apiheaders = new APIHeaders();
 		method = new APIMethods();
 		
-		try {
+		/*try {
 		method.createPOJOForJSON(System.getProperty("user.dir")+ "\\JSONFiles\\JSONRequest\\CustomerOnBoardAPI\\V1\\CustomerOnBoardRequestMaxSet", "com.OneAssist.com.OneAssist_API_Automation.pojoRequestClasses.CustomerOnBoardRequest", "CustomerOnBoardRequest");
 		method.createPOJOForJSON(System.getProperty("user.dir")+ "\\JSONFiles\\JSONResponse\\CustomerOnBoardAPI\\V1\\CustomerOnBoardAPIResponse", "com.OneAssist.com.OneAssist_API_Automation.pojoResponseClasses.CustomerOnBoardResponse", "CustomerOnBoardResponse");
 		} catch (Exception e) {
 			e.printStackTrace();
-		}
+		}*/
 	}
 
 	

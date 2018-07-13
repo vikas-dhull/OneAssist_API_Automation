@@ -6,6 +6,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -83,15 +84,17 @@ public class ExcelUtil {
 		public static Map<String,String> getExcelRowColDataInHashMap(String filePath, String fileName, String sheetName, int rowNo){
 			Map<String,String> exlMapData = new LinkedHashMap<String,String>();
 			int colNo=0;
+			String colName=null;
 			try {
 				List<String> headerData = getHeaders(filePath,fileName,sheetName);
 				List<String> apiData = getExcelDataOfOneRow(filePath, fileName, sheetName, rowNo);				
 				
-				/*for(String str: apiData) {
+				for(String str: apiData) {
 					System.out.println("api data : " + str);
-				}*/
+				}
 				
 				for(String str: headerData) {
+					colName=str;
 					if("SKIP".equalsIgnoreCase(apiData.get(colNo))) {
 						colNo++;
 						continue;
@@ -109,7 +112,7 @@ public class ExcelUtil {
 					    exlMapData.put(str, strDate);
 					}						
 					else if("EMAIL".equalsIgnoreCase(apiData.get(colNo))) {
-						String email = "email" + LocalDateTime.now()+"@mailinator.com";
+						String email = "email" + LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd-MMM-yyyy_HHmmss"))+"@mailinator.com";
 						exlMapData.put(str, email);
 					}						
 					else if("MOBILE".equalsIgnoreCase(apiData.get(colNo))) {
@@ -124,7 +127,7 @@ public class ExcelUtil {
 				}
 			} catch (Exception e) {
 				
-				System.out.println("Exception while getting All Excel Data from File {"+fileName+"} and Sheet {"+sheetName+"}. {"+colNo+"}"+e.getStackTrace());
+				System.out.println("Exception while getting All Excel Data from File {"+fileName+"} and Sheet {"+sheetName+"}. {"+colName+"}"+e.getStackTrace());
 			}
 		return exlMapData;
 	}
@@ -148,12 +151,14 @@ public class ExcelUtil {
 					System.out.println("Row No. can't be less than 1.");
 					return oneRowData;
 				}
-				Iterator<Row> rowIterator = sheet.iterator();
+				
+				Iterator<Row> rowIterator = sheet.iterator();				
+				int noOfColumns = sheet.getRow(0).getLastCellNum();
 				Row row = null;
+				
 				for (int i = 0; i < rowNo; i++)
 					row = rowIterator.next();
-
-				int noOfColumns = row.getPhysicalNumberOfCells();
+				
 				for (int j = 0; j < noOfColumns; j++) {
 					Cell cell = row.getCell(j);
 					if (cell == null) {

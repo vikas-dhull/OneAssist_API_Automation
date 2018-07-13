@@ -46,11 +46,48 @@ public class CustomerOnBoardPojoHelper {
 
 		customerInfos.add(customerInfo);
 
-		OrderInfo orderInfo =new OrderInfo(Integer.parseInt(apiPayload.get("orderId")), apiPayload.get("memStartDate"),
+		/*OrderInfo orderInfo =new OrderInfo(Integer.parseInt(apiPayload.get("orderId")), apiPayload.get("memStartDate"),
 				Integer.parseInt(apiPayload.get("planCode")),Integer.parseInt(apiPayload.get("promoCode")) ,
 				Integer.parseInt(apiPayload.get("partnerCode") ),
 				Integer.parseInt( apiPayload.get("partnerBUCode")), apiPayload.get("applicationNo"),apiPayload.get("applicationDate") );
-
+*/
+		
+		OrderInfo orderInfo = new OrderInfo();
+		try {
+			orderInfo.setOrderId(Integer.parseInt(apiPayload.get("orderId")));
+		} catch (NumberFormatException e) {
+			System.out.println("caught NumberFormatException while parsing orderId..!!");
+		}		
+		
+		orderInfo.setMemStartDate(apiPayload.get("memStartDate"));
+		
+		try {
+			orderInfo.setPlanCode(Integer.parseInt(apiPayload.get("planCode")));
+		} catch (NumberFormatException e) {
+			System.out.println("caught NumberFormatException while parsing orderId..!!");
+		}
+		
+		try {
+			orderInfo.setPromoCode(Integer.parseInt(apiPayload.get("promoCode")));
+		} catch (NumberFormatException e) {
+			System.out.println("caught NumberFormatException while parsing orderId..!!");
+		}
+		
+		try {
+			orderInfo.setPartnerCode(Integer.parseInt(apiPayload.get("partnerCode")));
+		} catch (NumberFormatException e) {
+			System.out.println("caught NumberFormatException while parsing orderId..!!");
+		}
+		
+		try {
+			orderInfo.setPartnerBUCode(Integer.parseInt( apiPayload.get("partnerBUCode")));
+		} catch (NumberFormatException e) {
+			System.out.println("caught NumberFormatException while parsing orderId..!!");
+		}
+		
+		orderInfo.setApplicationNo(apiPayload.get("applicationNo"));
+		orderInfo.setApplicationDate(apiPayload.get("applicationDate"));
+		
 		PaymentInfo paymentInfo =new PaymentInfo(apiPayload.get("mid"), apiPayload.get("acquirer"), 
 				apiPayload.get("accountNo"),apiPayload.get("accountHolderName") ,apiPayload.get("accountType") ,
 				apiPayload.get("ifscCode"), apiPayload.get("issueOnBranch"), apiPayload.get("ecsStartDate"),
@@ -69,9 +106,7 @@ public class CustomerOnBoardPojoHelper {
 				apiPayload.get("crmAgent"), apiPayload.get("leadSource"),
 				apiPayload.get("leadCreatedDate") ,apiPayload.get("utmCampaign") ,
 				apiPayload.get("utmContent"),apiPayload.get("utmTerm") , 
-				apiPayload.get("url"), apiPayload.get("utmMedium"));
-		
-		
+				apiPayload.get("url"), apiPayload.get("utmMedium"));		
 
 				CustomerOnBoardRequest customerOnBoardRequest =new CustomerOnBoardRequest(Integer.parseInt(apiPayload.get("initiatingSystem")), apiPayload.get("action"), apiPayload.get("activityReferenceId"), customerInfos, addressInfos, orderInfo, paymentInfo, utmParamInfo);
 				reqJson = JsonHelper.getJsonStringFromJsonObject(customerOnBoardRequest);		
