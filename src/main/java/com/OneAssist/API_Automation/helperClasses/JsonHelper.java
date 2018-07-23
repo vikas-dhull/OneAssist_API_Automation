@@ -14,7 +14,7 @@ public class JsonHelper {
 	}
 	
 	static {
-		gsonObj = new GsonBuilder().setPrettyPrinting().create();
+		gsonObj = new GsonBuilder().setPrettyPrinting().serializeNulls().create();
 	}
 	
 	public static String getJsonStringFromJsonObject(Object src) {
@@ -27,7 +27,7 @@ public class JsonHelper {
                              ", Value = " + entry.getValue());
 		}*/
 		String jsonStr = gsonObj.toJson(mapData);
-		System.out.println(jsonStr);
+		//System.out.println(jsonStr);
 		return jsonStr;
 	}
 	

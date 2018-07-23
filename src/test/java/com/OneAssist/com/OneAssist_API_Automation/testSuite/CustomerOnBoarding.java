@@ -70,9 +70,10 @@ public class CustomerOnBoarding extends ConfigDetails{
 			throws MalformedURLException, URISyntaxException, IOException {
 		
 		SoftAssert softAssert = new SoftAssert();
-		String str = JsonHelper.getJsonStringFromMapData(payloadData);
-		System.out.println("JSON request : " + str);		
-		String reqJson=CustomerOnBoardPojoHelper.setCustomerOnBoardPojo(payloadData);	
+		/*String str = JsonHelper.getJsonStringFromMapData(payloadData);*/
+				
+		String reqJson=CustomerOnBoardPojoHelper.setCustomerOnBoardPojo(payloadData);
+		System.out.println("JSON request : " + reqJson);
 	
 		String apiUrl = baseURL + resourceURL;
 		System.out.println("API request URL under testing : " + apiUrl);		
@@ -82,14 +83,14 @@ public class CustomerOnBoarding extends ConfigDetails{
 		CustomerOnBoardResponse customerOnBoardResponse= JsonHelper.setResponsePojoClass(responseStringJson, CustomerOnBoardResponse.class);
 		System.out.println("JSON response : " + response.getResponse());
 		
-	/*	if(response.getStatusCode()==200) {
-			if(bulkBoardingResp != null) {
-				softAssert.assertTrue("success".equals(bulkBoardingResp.getStatus()), 
-						"Invalid status received in response..{"+bulkBoardingResp.getStatus()+"}.");
-				softAssert.assertTrue(bulkBoardingResp.getPayNowLink()!=null && bulkBoardingResp.getPayNowLink().contains("paynow?"), 
-						"link is not valid..{"+bulkBoardingResp.getPayNowLink()+"}.");
-				softAssert.assertTrue(bulkBoardingResp.getMessage().contains("PENDING_CUSTOMER_CREATED_SUCCESSFULLY"), 
-						"success message is wrong..{"+bulkBoardingResp.getMessage()+"}.");
+		if(response.getStatusCode()==200) {
+			if(customerOnBoardResponse != null) {
+				softAssert.assertTrue("success".equals(customerOnBoardResponse.getStatus()), 
+						"Invalid status received in response..{"+customerOnBoardResponse.getStatus()+"}.");
+				softAssert.assertTrue(customerOnBoardResponse.getPayNowLink()!=null && customerOnBoardResponse.getPayNowLink().contains("paynow?"), 
+						"link is not valid..{"+customerOnBoardResponse.getPayNowLink()+"}.");
+				/*softAssert.assertTrue(bulkBoardingResp.getMessage().contains("PENDING_CUSTOMER_CREATED_SUCCESSFULLY"), 
+						"success message is wrong..{"+bulkBoardingResp.getMessage()+"}.");*/
 			} else {
 				softAssert.assertTrue(false, "Something went wrong, Response is not expected, found as NULL.." + 
 						"{"+response.getStatusCode() + "}. {"+response.getResponse()+"}. ");
@@ -104,7 +105,7 @@ public class CustomerOnBoarding extends ConfigDetails{
 					"{"+response.getStatusCode() + "}. {"+response.getResponse()+"}. ");
 		}
 		softAssert.assertAll();
-		*/
+		
 	}
 	
 	

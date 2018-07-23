@@ -89,9 +89,9 @@ public class ExcelUtil {
 				List<String> headerData = getHeaders(filePath,fileName,sheetName);
 				List<String> apiData = getExcelDataOfOneRow(filePath, fileName, sheetName, rowNo);				
 				
-				for(String str: apiData) {
+				/*for(String str: apiData) {
 					System.out.println("api data : " + str);
-				}
+				}*/ // to debug only.
 				
 				for(String str: headerData) {
 					colName=str;

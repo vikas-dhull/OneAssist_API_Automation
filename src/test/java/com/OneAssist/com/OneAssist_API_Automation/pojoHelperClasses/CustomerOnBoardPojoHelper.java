@@ -26,8 +26,6 @@ public class CustomerOnBoardPojoHelper {
 		List<AssetInfo> assetInfos = new ArrayList<AssetInfo>();
 		List<AddressInfo> addressInfos = new ArrayList<AddressInfo>();
 
-
-
 		AssetInfo assetInfo =new AssetInfo(apiPayload.get("customerRelationType"), apiPayload.get("productCode"),
 				apiPayload.get("assetMake"), apiPayload.get("assetModel"), 
 				apiPayload.get("invoiceDate"),Integer.parseInt(apiPayload.get("invoiceValue")),apiPayload.get("serialNo1") ,
@@ -56,7 +54,7 @@ public class CustomerOnBoardPojoHelper {
 		try {
 			orderInfo.setOrderId(Integer.parseInt(apiPayload.get("orderId")));
 		} catch (NumberFormatException e) {
-			System.out.println("caught NumberFormatException while parsing orderId..!!");
+			System.out.println("caught NumberFormatException while parsing orderId, setting as NULL ..!!");
 		}		
 		
 		orderInfo.setMemStartDate(apiPayload.get("memStartDate"));
@@ -64,25 +62,25 @@ public class CustomerOnBoardPojoHelper {
 		try {
 			orderInfo.setPlanCode(Integer.parseInt(apiPayload.get("planCode")));
 		} catch (NumberFormatException e) {
-			System.out.println("caught NumberFormatException while parsing orderId..!!");
+			System.out.println("caught NumberFormatException while parsing planCode, setting as NULL ..!!");
 		}
 		
 		try {
 			orderInfo.setPromoCode(Integer.parseInt(apiPayload.get("promoCode")));
 		} catch (NumberFormatException e) {
-			System.out.println("caught NumberFormatException while parsing orderId..!!");
+			System.out.println("caught NumberFormatException while parsing promoCode, setting as NULL ..!!");
 		}
 		
 		try {
 			orderInfo.setPartnerCode(Integer.parseInt(apiPayload.get("partnerCode")));
 		} catch (NumberFormatException e) {
-			System.out.println("caught NumberFormatException while parsing orderId..!!");
+			System.out.println("caught NumberFormatException while parsing partnerCode, setting as NULL ..!!");
 		}
 		
 		try {
 			orderInfo.setPartnerBUCode(Integer.parseInt( apiPayload.get("partnerBUCode")));
 		} catch (NumberFormatException e) {
-			System.out.println("caught NumberFormatException while parsing orderId..!!");
+			System.out.println("caught NumberFormatException while parsing partnerBUCode, setting as NULL ..!!");
 		}
 		
 		orderInfo.setApplicationNo(apiPayload.get("applicationNo"));
