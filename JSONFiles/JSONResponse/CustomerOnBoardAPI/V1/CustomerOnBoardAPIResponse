@@ -65,5 +65,11 @@
     "secondaryCustomerName": null,
     "status": "success",
     "message": "PENDING_CUSTOMER_CREATED_SUCCESSFULLY",
-    "errors": null
+    "errors": [
+        {
+            "errorCode": "4507",
+            "message": "Membership Start Date is Invalid",
+            "attributeCode": null
+        }
+    ]
 }

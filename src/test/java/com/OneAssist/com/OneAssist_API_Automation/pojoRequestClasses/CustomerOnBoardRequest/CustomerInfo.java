@@ -33,7 +33,7 @@ public class CustomerInfo implements Serializable
     private String emailId;
     @SerializedName("mobileNumber")
     @Expose
-    private Long mobileNumber;
+    private Integer mobileNumber;
     @SerializedName("gender")
     @Expose
     private String gender;
@@ -93,7 +93,7 @@ public class CustomerInfo implements Serializable
      * @param previousCustomerId
      * @param assetInfo
      */
-    public CustomerInfo(String salutation, String firstName, String middleName, String lastName, String customerTempId, String emailId, Long mobileNumber, String gender, String relationship, String customerdob, String panCard, String dlNo, String passport, String aadharId, String previousCustomerId, String documentDownload, List<AssetInfo> assetInfo) {
+    public CustomerInfo(String salutation, String firstName, String middleName, String lastName, String customerTempId, String emailId, Integer mobileNumber, String gender, String relationship, String customerdob, String panCard, String dlNo, String passport, String aadharId, String previousCustomerId, String documentDownload, List<AssetInfo> assetInfo) {
         super();
         this.salutation = salutation;
         this.firstName = firstName;
@@ -162,11 +162,11 @@ public class CustomerInfo implements Serializable
         this.emailId = emailId;
     }
 
-    public Long getMobileNumber() {
+    public Integer getMobileNumber() {
         return mobileNumber;
     }
 
-    public void setMobileNumber(Long mobileNumber) {
+    public void setMobileNumber(Integer mobileNumber) {
         this.mobileNumber = mobileNumber;
     }
 
